@@ -39,7 +39,8 @@ def add_domain_info():
 
     current_user_id = g.user_id
 
-    domain = domain_util.get_root_domain(request.json['domain'])
+    # 修改：保留完整域名，不再转换为根域名
+    domain = request.json['domain'].strip()
     domain_start_time = request.json.get('domain_start_time')
     domain_expire_time = request.json.get('domain_expire_time')
     is_auto_update = request.json.get('is_auto_update', True)
@@ -99,7 +100,8 @@ def update_domain_info_by_id():
 
     domain_info_id = request.json['domain_info_id']
 
-    domain = domain_util.get_root_domain(request.json['domain'])
+    # 修改：保留完整域名，不再转换为根域名
+    domain = request.json['domain'].strip()
     domain_start_time = request.json.get('domain_start_time')
     domain_expire_time = request.json.get('domain_expire_time')
     is_auto_update = request.json.get('is_auto_update', True)
