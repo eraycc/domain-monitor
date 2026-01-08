@@ -26,8 +26,8 @@ class DomainInfoModel(BaseModel):
     # 分组
     group_id = IntegerField(default=0, null=False)
 
-    # 备注
-    comment = CharField(default="")
+    # 备注（修复长度限制）
+    comment = TextField(default="")
 
     # 域名
     domain = CharField(null=False)
